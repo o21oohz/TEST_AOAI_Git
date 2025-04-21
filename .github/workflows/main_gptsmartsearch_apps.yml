@@ -98,7 +98,7 @@ jobs:
 
     steps:
       - name: Download backend artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: python-backend-app
           path: ./backend
@@ -112,7 +112,7 @@ jobs:
           publish-profile: ${{ secrets.AZUREAPPSERVICE_BACKEND_PUBLISHPROFILE}}
       
       - name: Download frontend artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: python-frontend-app
           path: ./frontend
