@@ -2,11 +2,13 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-# Workflow Test 6
+# Workflow Test 7
 
 name: GPTSmartSearch Apps Deployment
 env:
   DO_BUILD_DURING_DEPLOYMENT: true
+  AZURE_WEBAPP_BACKEND_NAME: webApp-Backend-BotId-r7e5ktqimdbvq
+  AZURE_WEBAPP_FRONTEND_NAME: webApp-Frontend-r7e5ktqimdbvq
 
 on:
   push:
@@ -107,7 +109,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-backend-to-webapp
         with:
-          app-name: ${{ vars.AZURE_WEBAPP_BACKEND_NAME }}
+          app-name: ${{ env.AZURE_WEBAPP_BACKEND_NAME }}
           package: ./backend
           publish-profile: ${{ secrets.AZUREAPPSERVICE_BACKEND_PUBLISHPROFILE}}
       
@@ -121,6 +123,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-frontend-to-webapp
         with:
-          app-name: ${{ vars.AZURE_WEBAPP_FRONTEND_NAME }}
+          app-name: ${{ env.AZURE_WEBAPP_FRONTEND_NAME }}
           package: ./frontend
           publish-profile: ${{ secrets.AZUREAPPSERVICE_FRONTEND_PUBLISHPROFILE}}
