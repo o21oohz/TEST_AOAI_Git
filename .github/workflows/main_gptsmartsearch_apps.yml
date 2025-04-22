@@ -2,7 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-# Workflow Test 8
+# Workflow Test 10
 
 name: GPTSmartSearch Apps Deployment
 env:
@@ -99,10 +99,10 @@ jobs:
       url: ${{ steps.deploy-frontend-to-webapp.outputs.webapp-url }}
 
     steps:
-      #- name: Azure Login
-      #  uses: azure/login@v1
-      #  with:
-      #    creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Download backend artifact from build job
         uses: actions/download-artifact@v4
